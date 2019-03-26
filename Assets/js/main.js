@@ -10,7 +10,6 @@ function soundalert()
        dataType: 'json',
        success: function(data)
         {
-            
             $("#soundalert").html(data.count);
         }
    });

@@ -17,19 +17,21 @@ class WebNotificationController extends \Kanboard\Controller\WebNotificationCont
 
         if ($this->userUnreadNotificationModel->hasNotifications($user['id'])) {
             $notifications = $this->userUnreadNotificationModel->getAll($user['id']);
+            $alert_notifications = [];
+            $ten_seconds_ago = strtotime("-10 seconds");
 
             foreach ($notifications as $value) {
-                $timestamp = $value['date_creation'];
+                if($value['date_creation'] > $ten_seconds_ago) {
+                    $alert_notifications[] = $value;
+                }
             }
 
-            // if($timestamp > strtotime("-10000 seconds")) {
-                $this->response->json(
-                    [
-                        'count' => count($notifications),
-                        'notifications' => $notifications,
-                    ]
-                );
-            // }
+            $this->response->json(
+                [
+                    'count' => count($notifications),
+                    'notifications' => $alert_notifications,
+                ]
+            );
         }
     }
 }
