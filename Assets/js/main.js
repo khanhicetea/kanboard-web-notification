@@ -32,7 +32,7 @@ function soundalert()
                 var push_title = Object.byString(notification, 'event_data.task.title') || "Kanboard";
                 var project_id = Object.byString(notification, 'event_data.task.project_id') || 0;
                 var task_id = Object.byString(notification, 'event_data.task.id') || 0;
-                var task_link = (project_id && task_id) ? baseUrl+"?controller=TaskViewController&action=show&project_id="+project_id+"&task_id="+task_id : baseUrl;
+                var task_link = (project_id && task_id) ? "/?controller=TaskViewController&action=show&project_id="+project_id+"&task_id="+task_id : '/';
 
                 Push.create(push_title, {
                     body: notification.title,
