@@ -35,17 +35,18 @@ function soundalert()
                 var task_link = (project_id && task_id) ? "/?controller=TaskViewController&action=show&project_id="+project_id+"&task_id="+task_id : '/';
                 console.log(task_link);
 
-                Push.create(push_title, {
-                    body: notification.title,
-                    // link: task_link,
-                    icon: '/assets/img/favicon.png',
-                    timeout: 5000,
-                    onClick: function () {
-                        window.focus();
-                        window.open(baseUrl+task_link,"_self");
-                        this.close();
-                    }
-                });
+                setTimeout(function() {
+                    Push.create(push_title, {
+                        body: notification.title,
+                        icon: '/assets/img/favicon.png',
+                        timeout: 5000,
+                        onClick: function () {
+                            window.focus();
+                            window.open(baseUrl+task_link,"_self");
+                            this.close();
+                        }
+                    });
+                }, 6000 * idx);
             });
         }
    });
