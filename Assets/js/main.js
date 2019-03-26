@@ -13,15 +13,15 @@ function soundalert()
             $("#soundalert").html(data.count);
 
             $.each(data.notifications, function(idx, notification) {
-                // Push.create("Kanboard", {
-                //     body: notification,
-                //     icon: '/icon.png',
-                //     timeout: 4000,
-                //     onClick: function () {
-                //         window.focus();
-                //         this.close();
-                //     }
-                // });                
+                Push.create("Kanboard", {
+                    body: notification.title,
+                    icon: '/assets/img/favicon.png',
+                    timeout: 3000,
+                    onClick: function () {
+                        window.focus();
+                        this.close();
+                    }
+                });
             });
         }
    });
