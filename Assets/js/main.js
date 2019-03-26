@@ -11,6 +11,18 @@ function soundalert()
        success: function(data)
         {
             $("#soundalert").html(data.count);
+
+            $.each(data.notifications, function(idx, notification) {
+                // Push.create("Kanboard", {
+                //     body: notification,
+                //     icon: '/icon.png',
+                //     timeout: 4000,
+                //     onClick: function () {
+                //         window.focus();
+                //         this.close();
+                //     }
+                // });                
+            });
         }
    });
 }
