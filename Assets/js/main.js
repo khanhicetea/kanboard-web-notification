@@ -37,13 +37,14 @@ function soundalert()
 
                 Push.create(push_title, {
                     body: notification.title,
-                    link: task_link,
+                    // link: task_link,
                     icon: '/assets/img/favicon.png',
                     timeout: 5000,
-                    // onClick: function () {
-                    //     window.focus();
-                    //     this.close();
-                    // }
+                    onClick: function () {
+                        window.focus();
+                        window.open(baseUrl+task_link,"_self");
+                        this.close();
+                    }
                 });
             });
         }
