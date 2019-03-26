@@ -18,3 +18,26 @@ function soundalert()
 soundalert(); 
 
 setInterval(soundalert, 5000);
+
+$(document).ready(function() {
+    function checkWebNotification() {
+        var enabled = Push.Permission.has();
+        
+        $('#webNotificationToggle').text(enabled ? 'Enable Web Notification' : 'Enabled Web Notification');
+        if (enabled) {
+            $('#webNotificationToggle').attr('disabled', 'disabled');
+        } else {
+            $('#webNotificationToggle').removeAttr('disabled');
+        }
+
+        return enabled;
+    }
+
+    if ($('#webNotificationToggle').length) {
+        $('#webNotificationToggle').click(function(e) {
+            e.preventDefaults();
+
+            Push.Permission.request(checkWebNotification, checkWebNotification);
+        })
+    }
+})

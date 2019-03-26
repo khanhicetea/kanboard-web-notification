@@ -1,5 +1,5 @@
 <h3>
-    <i class="fa fa-amazon fa-fw" aria-hidden="true"></i>
+    <i class="fa fa-bell-o" aria-hidden="true"></i>
     Web Notification
 </h3>
 <div class="panel">
