@@ -24,7 +24,7 @@ $(document).ready(function() {
         var enabled = Push.Permission.has();
         
         console.log('Notification Permission', enabled);
-        $('#webNotificationToggle').text(enabled ? 'Enable Web Notification' : 'Enabled Web Notification');
+        $('#webNotificationToggle').text(enabled ? 'Web Notification : Enabled' : 'Enable Web Notification');
         if (enabled) {
             $('#webNotificationToggle').attr('disabled', 'disabled');
         } else {
