@@ -1,6 +1,22 @@
 var getUrl = window.location;
 var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 
+// Ref : https://stackoverflow.com/a/6491621
+Object.byString = function(o, s) {
+    s = s.replace(/\[(\w+)\]/g, '.$1');
+    s = s.replace(/^\./, '');
+    var a = s.split('.');
+    for (var i = 0, n = a.length; i < n; ++i) {
+        var k = a[i];
+        if (k in o) {
+            o = o[k];
+        } else {
+            return;
+        }
+    }
+    return o;
+}
+
 function soundalert()
 {
     $.ajax({
@@ -13,10 +29,11 @@ function soundalert()
             $("#soundalert").html(data.count);
 
             $.each(data.notifications, function(idx, notification) {
-                Push.create("Kanboard", {
+                var title = Object.byString(notification, 'event_data.task.title') || "Kanboard";
+                Push.create(title, {
                     body: notification.title,
                     icon: '/assets/img/favicon.png',
-                    timeout: 3000,
+                    timeout: 5000,
                     onClick: function () {
                         window.focus();
                         this.close();
@@ -29,7 +46,7 @@ function soundalert()
 
 soundalert(); 
 
-setInterval(soundalert, 5000);
+setInterval(soundalert, 10000);
 
 $(document).ready(function() {
     function checkWebNotification() {
