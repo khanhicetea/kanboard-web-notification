@@ -29,9 +29,14 @@ function soundalert()
             $("#soundalert").html(data.count);
 
             $.each(data.notifications, function(idx, notification) {
-                var title = Object.byString(notification, 'event_data.task.title') || "Kanboard";
-                Push.create(title, {
+                var push_title = Object.byString(notification, 'event_data.task.title') || "Kanboard";
+                var project_id = Object.byString(notification, 'event_data.task.project_id') || 0;
+                var task_id = Object.byString(notification, 'event_data.task.id') || 0;
+                var task_link = (project_id && task_id) ? baseUrl+"?controller=TaskViewController&action=show&project_id="+project_id+"&task_id="+task_id : baseUrl;
+
+                Push.create(push_title, {
                     body: notification.title,
+                    link: task_link,
                     icon: '/assets/img/favicon.png',
                     timeout: 5000,
                     onClick: function () {
