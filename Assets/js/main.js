@@ -39,10 +39,10 @@ function soundalert()
                     link: task_link,
                     icon: '/assets/img/favicon.png',
                     timeout: 5000,
-                    onClick: function () {
-                        window.focus();
-                        this.close();
-                    }
+                    // onClick: function () {
+                    //     window.focus();
+                    //     this.close();
+                    // }
                 });
             });
         }
