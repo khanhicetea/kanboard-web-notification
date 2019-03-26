@@ -36,7 +36,7 @@ $(document).ready(function() {
 
     if ($('#webNotificationToggle').length) {
         $('#webNotificationToggle').click(function(e) {
-            e.preventDefaults();
+            e.preventDefault();
 
             Push.Permission.request(checkWebNotification, checkWebNotification);
         })
