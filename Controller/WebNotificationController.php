@@ -22,13 +22,14 @@ class WebNotificationController extends \Kanboard\Controller\WebNotificationCont
                 $timestamp = $value['date_creation'];
             }
 
-            if($timestamp > strtotime("-10000 seconds")) {
-                $this->response->html(
-                    '<script>console.log("'.$timestamp.'")</script>'
+            // if($timestamp > strtotime("-10000 seconds")) {
+                $this->response->json(
+                    [
+                        'count' => count($notifications),
+                        'notifications' => $notifications,
+                    ]
                 );
-            }
-
-            $this->response->html(count($notifications));
+            // }
         }
     }
 }

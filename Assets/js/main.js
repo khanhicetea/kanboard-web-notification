@@ -7,11 +7,11 @@ function soundalert()
        type: "GET",
        url: baseUrl+"?controller=WebNotificationController&action=webNotifications&plugin=WebNotification",
        cache: false,
-       success: function(response)
+       dataType: 'json',
+       success: function(data)
         {
-            if (response != "") {
-                $("#soundalert").html(response);
-            }
+            
+            $("#soundalert").html(data.count);
         }
    });
 }
