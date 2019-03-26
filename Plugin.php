@@ -19,7 +19,7 @@ class Plugin extends Base
         $this->hook->on('template:layout:js', array('template' => 'plugins/WebNotification/Assets/js/main.js'));
         
         $this->template->setTemplateOverride('header/user_notifications', 'WebNotification:header/user_notifications');
-        $this->template->hook->attach('template:config:integrations', 'WebNotification:config');
+        $this->template->hook->attach('template:user:integrations', 'WebNotification:config');
     }
 
     public function getPluginName()
