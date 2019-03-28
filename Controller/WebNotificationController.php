@@ -18,7 +18,7 @@ class WebNotificationController extends \Kanboard\Controller\WebNotificationCont
         if ($this->userUnreadNotificationModel->hasNotifications($user['id'])) {
             $notifications = $this->userUnreadNotificationModel->getAll($user['id']);
             $alert_notifications = [];
-            $ten_seconds_ago = strtotime("-15 seconds");
+            $ten_seconds_ago = strtotime("-11 seconds");
 
             foreach ($notifications as $value) {
                 if($value['date_creation'] > $ten_seconds_ago) {
