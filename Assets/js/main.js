@@ -52,8 +52,6 @@ function soundalert()
    });
 }
 
-soundalert(); 
-
 setInterval(soundalert, 10000);
 
 $(document).ready(function() {
